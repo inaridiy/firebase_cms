@@ -6,6 +6,7 @@ import {
   Button,
   Heading,
   Skeleton,
+  Container,
 } from '@chakra-ui/react';
 import {
   ChevronLeftIcon,
@@ -14,6 +15,7 @@ import {
   AttachmentIcon,
   AddIcon,
 } from '@chakra-ui/icons';
+import { TwContainer } from '../components/atoms/TwContainer';
 export default function Home() {
   return (
     <Flex bg="gray.100" w="100vw" h="100vh">
@@ -41,12 +43,12 @@ export default function Home() {
           </Button>
         </Box>
       </Flex>
-      <Box mt={'6rem'} mx="auto">
+      <TwContainer mt={'6rem'}>
         <Heading as="h1" size="lg" fontWeight="bold">
           chakra-ui を使ってみる (+create-react-app)
         </Heading>
         <Flex mt={8}>
-          <Box w={'50rem'} bg="white" rounded="md" p={4} shadow="lg">
+          <Box w="100%" bg="white" rounded="md" p={4} shadow="lg">
             <ParagraphSkeleton />
             <ParagraphSkeleton />
             <ParagraphSkeleton />
@@ -57,7 +59,7 @@ export default function Home() {
             <ParagraphSkeleton />
             <ParagraphSkeleton />
           </Box>
-          <Box ml={6}>
+          <Box ml={6} w="32">
             <Box bg="white" rounded="full" p={1} shadow="lg">
               <IconButton
                 aria-label="edit"
@@ -97,7 +99,7 @@ export default function Home() {
             </Box>
           </Box>
         </Flex>
-      </Box>
+      </TwContainer>
     </Flex>
   );
 }
