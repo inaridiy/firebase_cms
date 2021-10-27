@@ -1,7 +1,7 @@
 import { Flex } from '@chakra-ui/layout';
 import React from 'react';
 import { needChild } from '../../types/needChild';
-import { Card } from '../atoms/card';
+import { Card } from '../atoms/Card';
 
 export const AuthLayout: React.FC<needChild> = ({ children }) => {
   return (

@@ -1,5 +1,7 @@
-import { Heading } from '@chakra-ui/layout';
+import { Heading, Stack } from '@chakra-ui/layout';
+
 import { AuthLayout } from '../../components/layouts/auth';
+import { LoginForm } from '../../components/moleciles/LoginForm';
 
 export default function Login() {
   return (
@@ -7,6 +9,7 @@ export default function Login() {
       <Heading as="h1" size="lg" fontWeight="bold">
         Login
       </Heading>
+      <LoginForm />
     </AuthLayout>
   );
 }
