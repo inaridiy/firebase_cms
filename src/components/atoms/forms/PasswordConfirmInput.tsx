@@ -13,37 +13,39 @@ import {
 import { LockIcon, ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import { IconButton } from '@chakra-ui/button';
 
-type PasswordInputProps = {
-  onChange?: (value: string) => void;
+type PasswordConfirmInputProps = {
   onValidate?: (isValid: boolean) => void;
+  masterPassword?: string;
   isShowError?: boolean;
 };
 
-export const PasswordInput: React.FC<PasswordInputProps> = (props) => {
+export const PasswordConfirmInput: React.FC<PasswordConfirmInputProps> = (
+  props
+) => {
   const [isShow, setIsShow] = useState(false);
   const [password, setPassword] = useState('');
   const [isValid, setIsValid] = useState(false);
 
   useEffect(() => {
-    setIsValid(password.length >= 8);
+    setIsValid(props.masterPassword === password);
+
     props.onValidate && props.onValidate(isValid);
-    props.onChange && props.onChange(password);
-  }, [password]);
+  }, [password, props.masterPassword]);
 
   return (
     <FormControl
-      id="password"
+      id="password-confirm"
       isRequired
       isInvalid={props.isShowError && !isValid}
     >
-      <FormLabel>Password</FormLabel>
+      <FormLabel>Retype your password</FormLabel>
       <InputGroup>
         <InputLeftElement pointerEvents="none">
           <LockIcon color="gray.300" />
         </InputLeftElement>
         <Input
           type={isShow ? 'text' : 'password'}
-          placeholder="your password"
+          placeholder="Retype your password"
           onChange={(e) => setPassword(e.target.value)}
         />
         <InputRightElement>
@@ -55,9 +57,7 @@ export const PasswordInput: React.FC<PasswordInputProps> = (props) => {
           />
         </InputRightElement>
       </InputGroup>
-      <FormErrorMessage>
-        Password must be at least 8 characters
-      </FormErrorMessage>
+      <FormErrorMessage>Password does not match</FormErrorMessage>
     </FormControl>
   );
 };

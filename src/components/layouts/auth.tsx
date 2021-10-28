@@ -27,6 +27,7 @@ export const AuthLayout: React.FC<needChild> = ({ children }) => {
         bg="transparent"
         top="3"
         right="3"
+        size="lg"
         onClick={toggleColorMode}
         icon={colorMode === 'light' ? <SunIcon /> : <MoonIcon />}
       />
