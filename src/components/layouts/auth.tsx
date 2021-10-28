@@ -19,7 +19,7 @@ export const AuthLayout: React.FC<needChild> = ({ children }) => {
         justifyContent="center"
         alignItems="center"
       >
-        <Card minW={{ base: '90%', md: '468px' }}>{children}</Card>
+        <Card minW={{ base: '90%', sm: '468px' }}>{children}</Card>
       </Flex>
       <IconButton
         aria-label="switch dark mode"
