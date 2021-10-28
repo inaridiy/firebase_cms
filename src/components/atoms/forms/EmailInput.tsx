@@ -14,39 +14,16 @@ type EmailInputProps = {
 };
 
 export const EmailInput: React.FC<EmailInputProps> = (props) => {
-  const [email, setEmail] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
-  const [isValid, setIsValid] = useState(false);
-
-  useEffect(() => {
-    setIsValid(
-      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
-        email
-      )
-    );
-    props.onValidate && props.onValidate(isValid);
-    setErrorMessage(isValid ? '' : 'Invalid email');
-    props.onChange && props.onChange(email);
-  }, [email]);
-
   return (
-    <FormControl
-      id="email"
-      isRequired
-      isInvalid={props.isShowError && !isValid}
-    >
+    <FormControl id="email" isRequired>
       <FormLabel>Email</FormLabel>
       <InputGroup>
         <InputLeftElement pointerEvents="none">
           <EmailIcon color="gray.300" />
         </InputLeftElement>
-        <Input
-          type="email"
-          placeholder="email address"
-          onChange={(e) => setEmail(e.target.value)}
-        />
+        <Input type="email" placeholder="email address" />
       </InputGroup>
-      <FormErrorMessage>{errorMessage}</FormErrorMessage>
+      <FormErrorMessage>{}</FormErrorMessage>
     </FormControl>
   );
 };

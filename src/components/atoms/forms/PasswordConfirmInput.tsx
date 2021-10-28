@@ -23,20 +23,12 @@ export const PasswordConfirmInput: React.FC<PasswordConfirmInputProps> = (
   props
 ) => {
   const [isShow, setIsShow] = useState(false);
-  const [password, setPassword] = useState('');
-  const [isValid, setIsValid] = useState(false);
-
-  useEffect(() => {
-    setIsValid(props.masterPassword === password);
-
-    props.onValidate && props.onValidate(isValid);
-  }, [password, props.masterPassword]);
 
   return (
     <FormControl
       id="password-confirm"
       isRequired
-      isInvalid={props.isShowError && !isValid}
+      //    isInvalid={props.isShowError && !isValid}
     >
       <FormLabel>Retype your password</FormLabel>
       <InputGroup>
@@ -46,7 +38,7 @@ export const PasswordConfirmInput: React.FC<PasswordConfirmInputProps> = (
         <Input
           type={isShow ? 'text' : 'password'}
           placeholder="Retype your password"
-          onChange={(e) => setPassword(e.target.value)}
+          // onChange={(e) => setPassword(e.target.value)}
         />
         <InputRightElement>
           <IconButton

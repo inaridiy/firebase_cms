@@ -11,40 +11,12 @@ type Props = {
 };
 
 export const LoginForm = ({ onSubmit, onGoogleLogin }: Props) => {
-  const data = { email: '', password: '' };
-  const handlePasswordChange = (e: string) => (data.password = e);
-  const handleEmailChange = (e: string) => (data.email = e);
-
-  const [isEmailValid, setIsEmailValid] = useState(false);
-  const [isPasswordValid, setIsPasswordValid] = useState(false);
-
-  const [isShowError, setIsShowError] = useState(false);
-
-  const handleSubmit = () => {
-    if (isEmailValid && isPasswordValid) {
-      setIsShowError(false);
-
-      onSubmit && onSubmit(data);
-    } else {
-      setIsShowError(true);
-    }
-  };
   return (
     <Stack spacing={4} mt="4">
-      <EmailInput
-        onChange={handleEmailChange}
-        onValidate={setIsEmailValid}
-        isShowError={isShowError}
-      />
-      <PasswordInput
-        onChange={handlePasswordChange}
-        onValidate={setIsPasswordValid}
-        isShowError={isShowError}
-      />
+      <EmailInput />
+      <PasswordInput />
       <Stack direction={['column', 'row']}>
-        <SubmitBtn w={{ base: '100%', sm: '50%' }} onClick={handleSubmit}>
-          Login
-        </SubmitBtn>
+        <SubmitBtn w={{ base: '100%', sm: '50%' }}>Login</SubmitBtn>
         <Button
           w={{ base: '100%', sm: '50%' }}
           leftIcon={<FcGoogle />}

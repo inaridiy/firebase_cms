@@ -21,20 +21,12 @@ type PasswordInputProps = {
 
 export const PasswordInput: React.FC<PasswordInputProps> = (props) => {
   const [isShow, setIsShow] = useState(false);
-  const [password, setPassword] = useState('');
-  const [isValid, setIsValid] = useState(false);
-
-  useEffect(() => {
-    setIsValid(password.length >= 8);
-    props.onValidate && props.onValidate(isValid);
-    props.onChange && props.onChange(password);
-  }, [password]);
 
   return (
     <FormControl
       id="password"
       isRequired
-      isInvalid={props.isShowError && !isValid}
+      //    isInvalid={props.isShowError && !isValid}
     >
       <FormLabel>Password</FormLabel>
       <InputGroup>
@@ -44,7 +36,7 @@ export const PasswordInput: React.FC<PasswordInputProps> = (props) => {
         <Input
           type={isShow ? 'text' : 'password'}
           placeholder="your password"
-          onChange={(e) => setPassword(e.target.value)}
+          // onChange={(e) => setPassword(e.target.value)}
         />
         <InputRightElement>
           <IconButton
