@@ -46,6 +46,7 @@ export const PasswordInput: React.FC<PasswordInputProps> = (props) => {
         <InputRightElement>
           <IconButton
             aria-label="switch"
+            color="gray.700"
             icon={isShow ? <ViewOffIcon /> : <ViewIcon />}
             onClick={() => setIsShow(!isShow)}
           />

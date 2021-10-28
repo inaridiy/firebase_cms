@@ -23,6 +23,7 @@ export const EmailInput: React.FC<EmailInputProps> = (props) => {
       /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
         email
       );
+
     props.onValidate && props.onValidate(isValid);
     setErrorMessage(isValid ? '' : 'Invalid email');
   }, [email]);

@@ -1,13 +1,28 @@
+import { Button } from '@chakra-ui/button';
 import { Stack } from '@chakra-ui/layout';
 import { EmailInput, PasswordInput } from '../atoms/forms';
+import { SubmitBtn } from '../atoms/SubmitBtn';
 
-type Props = {};
+type Props = {
+  onChange?: (e: { email: string; password: string }) => void;
+  onSubmit?: (e: React.FormEvent<HTMLFormElement>) => void;
+};
 
-export const LoginForm: React.FC<Props> = ({}) => {
+export const LoginForm = ({ onChange, onSubmit }: Props) => {
+  const data = { email: '', password: '' };
+  const onPasswordChange = (e: string) => {
+    data.password = e;
+    onChange && onChange(data);
+  };
+  const onEmailChange = (e: string) => {
+    data.email = e;
+    onChange && onChange(data);
+  };
   return (
-    <Stack pt="4" spacing={3}>
-      <EmailInput />
-      <PasswordInput />
+    <Stack spacing={4}>
+      <EmailInput onChange={onEmailChange} />
+      <PasswordInput onChange={onPasswordChange} />
+      <SubmitBtn>Login</SubmitBtn>
     </Stack>
   );
 };
