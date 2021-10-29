@@ -18,7 +18,7 @@ export const LoginForm = ({ onSubmit, onGoogleLogin }: Props) => {
 
   return (
     <Stack spacing={4} mt="4">
-      <EmailInput />
+      <EmailInput onChange={(e) => setEmail(e.target.value)} />
       <PasswordInput />
       <Stack direction={['column', 'row']}>
         <SubmitBtn w={{ base: '100%', sm: '50%' }}>Login</SubmitBtn>
