@@ -1,35 +1,53 @@
 import { useState } from 'react';
 import { Stack } from '@chakra-ui/layout';
 import { EmailInput, PasswordInput } from '../atoms/forms';
-import { SubmitBtn } from '../atoms/buttons/SubmitBtn';
-import { Button } from '@chakra-ui/react';
-import { FcGoogle } from 'react-icons/fc';
 import { useValidateState } from '../../hooks/useValidateState';
+import { SubmitFormButtons } from './SubmitFormButtons';
 
 type Props = {
   onSubmit?: (data: { email: string; password: string }) => void;
-  onGoogleLogin?: () => void;
+  onGoogleSubmit?: () => void;
 };
 
-export const LoginForm = ({ onSubmit, onGoogleLogin }: Props) => {
-  const [email, isValid, setEmail] = useValidateState('', (value) => {
-    return /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value);
-  });
+export const LoginForm = ({ onSubmit, onGoogleSubmit }: Props) => {
+  const [email, isEmailValid, setEmail] = useValidateState('', (value) =>
+    /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)
+  );
+  const [password, isPassWordValid, setPassword] = useValidateState(
+    '',
+    (value) => value.length >= 8
+  );
+
+  const [emailError, setEmailError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
+
+  const trySubmit = () => {
+    const isValid = isEmailValid && isPassWordValid;
+    if (isValid && onSubmit) {
+      onSubmit({ email, password });
+    } else {
+      setEmailError(isEmailValid ? '' : 'Email is not valid');
+      setPasswordError(
+        isPassWordValid ? '' : 'The password must be 8 or more characters'
+      );
+    }
+  };
 
   return (
     <Stack spacing={4} mt="4">
-      <EmailInput onChange={(e) => setEmail(e.target.value)} />
-      <PasswordInput />
-      <Stack direction={['column', 'row']}>
-        <SubmitBtn w={{ base: '100%', sm: '50%' }}>Login</SubmitBtn>
-        <Button
-          w={{ base: '100%', sm: '50%' }}
-          leftIcon={<FcGoogle />}
-          onClick={onGoogleLogin || (() => {})}
-        >
-          Login with Google
-        </Button>
-      </Stack>
+      <EmailInput
+        onChange={(e) => setEmail(e.target.value)}
+        errorMessage={emailError}
+      />
+      <PasswordInput
+        onChange={(e) => setPassword(e.target.value)}
+        errorMessage={passwordError}
+      />
+      <SubmitFormButtons
+        message="Login"
+        onSubmit={trySubmit}
+        onGoogleSubmit={onGoogleSubmit}
+      />
     </Stack>
   );
 };

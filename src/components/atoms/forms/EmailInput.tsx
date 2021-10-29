@@ -12,21 +12,23 @@ import {
 } from '@chakra-ui/input';
 import { EmailIcon } from '@chakra-ui/icons';
 
-type EmailInputProps = {
-  isShowError?: boolean;
+type EmailInputProps = InputProps & {
+  errorMessage?: string;
 };
 
-export const EmailInput: React.FC<EmailInputProps | InputProps> = (props) => {
+export const EmailInput: React.FC<EmailInputProps> = (props) => {
+  const { errorMessage, ...rest } = props;
+
   return (
-    <FormControl id="email" isRequired>
+    <FormControl id="email" isRequired isInvalid={Boolean(errorMessage)}>
       <FormLabel>Email</FormLabel>
       <InputGroup>
         <InputLeftElement pointerEvents="none">
           <EmailIcon color="gray.300" />
         </InputLeftElement>
-        <Input type="email" placeholder="email address" {...props} />
+        <Input type="email" placeholder="email address" {...rest} />
       </InputGroup>
-      <FormErrorMessage>{}</FormErrorMessage>
+      <FormErrorMessage>{errorMessage}</FormErrorMessage>
     </FormControl>
   );
 };
