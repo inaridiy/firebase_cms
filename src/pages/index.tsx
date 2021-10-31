@@ -16,9 +16,14 @@ import {
   AddIcon,
 } from '@chakra-ui/icons';
 import { TwContainer } from '../components/atoms/TwContainer';
+import { DefaultLayout } from '../components/layouts/default';
+import { ReactElement } from 'react';
+import { useNavi } from '../hooks/useNavi';
+
 export default function Home() {
+  const { onOpen } = useNavi();
   return (
-    <Flex bg="gray.100" w="100vw" h="100vh">
+    <Flex h="100vh">
       <Flex
         as="header"
         position="fixed"
@@ -38,7 +43,7 @@ export default function Home() {
         </Box>
         <Spacer />
         <Box>
-          <Button disabled colorScheme="blue">
+          <Button colorScheme="blue" onClick={onOpen}>
             保存済み
           </Button>
         </Box>
@@ -103,4 +108,7 @@ export default function Home() {
     </Flex>
   );
 }
+
+Home.getLayout = (page: ReactElement) => <DefaultLayout>{page}</DefaultLayout>;
+
 const ParagraphSkeleton = () => <Skeleton mb={4} h={'1rem'}></Skeleton>;
