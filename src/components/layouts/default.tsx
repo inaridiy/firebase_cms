@@ -6,6 +6,7 @@ import { SideContent } from '../moleciles/side/SideContentFrame';
 import { MenuProvider } from '../providers/MenuProvider';
 import { HStack } from '@chakra-ui/react';
 import { ToggleNavBtn } from '../atoms/navi/ToggleNaviBtn';
+import { ToggleColorBtn } from '../atoms/toggleLightMode';
 
 export const DefaultLayout: React.FC<needChild> = ({ children }) => {
   return (
@@ -27,6 +28,7 @@ export const DefaultLayout: React.FC<needChild> = ({ children }) => {
             >
               <Heading>Heading</Heading>
               <Spacer />
+              <ToggleColorBtn />
               <ToggleNavBtn />
             </HStack>
           </Stack>
