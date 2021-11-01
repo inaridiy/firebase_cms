@@ -16,7 +16,7 @@ export const SideStaticDrawer: React.FC<needChild> = ({ children }) => {
       pos="relative"
       bg={useColorModeValue('gray.50', 'gray.800')}
       borderRightWidth="2px"
-      borderRightColor={useColorModeValue('gray.200', 'gray.700')}
+      borderRightColor={useColorModeValue('gray.300', 'gray.700')}
     >
       {children}
     </Box>

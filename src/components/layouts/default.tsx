@@ -22,7 +22,8 @@ export const DefaultLayout: React.FC<needChild> = ({ children }) => {
             <HStack
               borderBottom="2px"
               p="4"
-              borderColor={useColorModeValue('gray.200', 'gray.700')}
+              h={20}
+              borderColor={useColorModeValue('gray.300', 'gray.700')}
             >
               <Heading>Heading</Heading>
               <Spacer />
