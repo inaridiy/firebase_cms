@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
 import { Flex } from '@chakra-ui/react';
 import { DefaultLayout } from '../components/layouts/default';
-import { Header } from '../components/atoms/Header';
+import { Header } from '../components/moleciles/Header';
 
 export default function Home() {
   return (
