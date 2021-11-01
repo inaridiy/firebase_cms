@@ -8,10 +8,7 @@ export const ToggleColorBtn: React.FC = () => {
   return (
     <IconButton
       aria-label="switch dark mode"
-      position="fixed"
       bg="transparent"
-      top="3"
-      right="3"
       size="lg"
       onClick={toggleColorMode}
       icon={colorMode === 'light' ? <SunIcon /> : <MoonIcon />}
