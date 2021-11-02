@@ -7,6 +7,7 @@ export const ToggleNavBtn: React.FC = ({}) => {
   return (
     <IconButton
       aria-label="toggle-navi"
+      bg="transparent"
       icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
       onClick={onToggle}
     />

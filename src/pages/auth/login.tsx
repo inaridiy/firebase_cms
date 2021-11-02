@@ -1,15 +1,37 @@
-import { ReactElement } from 'react';
+import { ReactElement, useState } from 'react';
 import { Heading } from '@chakra-ui/layout';
 import { AuthLayout } from '../../components/layouts/auth';
 import { LoginForm } from '../../components/moleciles/LoginForm';
+import { useAuth } from '../../hooks/useAuth';
 
 export default function Login() {
+  const { loginByGoogle, loginByPassword } = useAuth();
+  const [error, setError] = useState('');
+
+  const handleLoginByPassword = async (email: string, password: string) => {
+    try {
+      return await loginByPassword(email, password);
+    } catch (error) {
+      if ((error as any).code === 'auth/user-not-found') {
+        setError('User not found');
+      } else {
+        setError('Unknown error');
+      }
+    }
+  };
+
   return (
     <>
       <Heading as="h1" size="lg" fontWeight="bold">
         Login
       </Heading>
-      <LoginForm />
+      <LoginForm
+        errorMessage={error}
+        onGoogleSubmit={loginByGoogle}
+        onSubmit={({ email, password }) =>
+          handleLoginByPassword(email, password)
+        }
+      />
     </>
   );
 }
