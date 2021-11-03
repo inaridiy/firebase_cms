@@ -2,10 +2,9 @@ import { ReactElement, useState } from 'react';
 import { Heading } from '@chakra-ui/layout';
 import { AuthLayout } from '../../components/layouts/auth';
 import { LoginForm } from '../../components/moleciles/LoginForm';
-import { useAuth } from '../../hooks/useAuth';
+import { loginByGoogle, loginByPassword } from '../../firebase/auth';
 
 export default function Login() {
-  const { loginByGoogle, loginByPassword } = useAuth();
   const [error, setError] = useState('');
 
   const handleLoginByPassword = async (email: string, password: string) => {

@@ -6,21 +6,8 @@ import { MenuProvider } from '../providers/MenuProvider';
 import { HStack } from '@chakra-ui/react';
 import { ToggleNavBtn } from '../atoms/navi/ToggleNaviBtn';
 import { ToggleColorBtn } from '../atoms/toggleLightMode';
-import { useAuth } from '../../hooks/useAuth';
-import { useRouter } from 'next/dist/client/router';
-import { useEffect } from 'react';
 
 export const DefaultLayout: React.FC<needChild> = ({ children }) => {
-  const { loading, user } = useAuth();
-  const router = useRouter();
-
-  useEffect(() => {
-    console.log(user, loading);
-    if (window && !user && !loading) {
-      router.push('/auth/login');
-    }
-  }, [loading]);
-
   return (
     <MenuProvider>
       <Flex
