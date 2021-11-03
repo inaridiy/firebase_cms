@@ -27,7 +27,6 @@ export const DefaultLayout: React.FC<needChild> = ({ children }) => {
             >
               <Heading>Heading</Heading>
               <Spacer />
-              <ToggleColorBtn />
               <ToggleNavBtn />
             </HStack>
           </Stack>

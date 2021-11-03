@@ -9,7 +9,6 @@ export const SideStaticDrawer: React.FC<needChild> = ({ children }) => {
   const { isOpen } = useNavi();
   return (
     <Box
-      w={{ base: 'full', md: '30%' }}
       maxW={{ base: 'full', md: '360px' }}
       display={isOpen ? { base: 'none', md: 'block' } : 'none'}
       minH="100vh"

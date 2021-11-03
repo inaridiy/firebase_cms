@@ -7,7 +7,7 @@ export const ToggleColorBtn: React.FC = () => {
 
   return (
     <IconButton
-      aria-label="switch dark mode"
+      aria-label="Toggle light/dark mode"
       bg="transparent"
       size="lg"
       onClick={toggleColorMode}
