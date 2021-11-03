@@ -6,7 +6,7 @@ export const SideMinHeader: React.FC = ({}) => {
   return (
     <HStack
       borderBottom="2px"
-      p="4"
+      p="3"
       h={20}
       borderColor={useColorModeValue('gray.300', 'gray.700')}
     >

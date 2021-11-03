@@ -19,6 +19,7 @@ export const SideHeadingFrame: React.FC<Props> = ({
       <Heading as="h3" size="md">
         {children}
       </Heading>
+
       <Spacer />
       {icon && (
         <IconButton
