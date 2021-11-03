@@ -1,11 +1,9 @@
 import { useColorModeValue } from '@chakra-ui/color-mode';
-import { Box, Flex, Heading, Spacer, Stack } from '@chakra-ui/layout';
+import { Box, Flex, Stack } from '@chakra-ui/layout';
 import { needChild } from '../../types/needChild';
-import { SideContent } from '../moleciles/side/SideContentFrame';
 import { MenuProvider } from '../providers/MenuProvider';
-import { HStack } from '@chakra-ui/react';
-import { ToggleNavBtn } from '../atoms/navi/ToggleNaviBtn';
-import { ToggleColorBtn } from '../atoms/toggleLightMode';
+import { Header } from '../moleciles/Header';
+import { SideContent } from '../moleciles/side/SideContent';
 
 export const DefaultLayout: React.FC<needChild> = ({ children }) => {
   return (
@@ -17,21 +15,11 @@ export const DefaultLayout: React.FC<needChild> = ({ children }) => {
         justifyContent="center"
         alignItems="center"
       >
-        <SideContent>
-          <Stack>
-            <HStack
-              borderBottom="2px"
-              p="4"
-              h={20}
-              borderColor={useColorModeValue('gray.300', 'gray.700')}
-            >
-              <Heading>Heading</Heading>
-              <Spacer />
-              <ToggleNavBtn />
-            </HStack>
-          </Stack>
-        </SideContent>
-        <Box flexGrow={1}>{children}</Box>
+        <SideContent />
+        <Stack w="full" h="100vh" spacing={0}>
+          <Header />
+          <Box flexGrow={1}>{children}</Box>
+        </Stack>
       </Flex>
     </MenuProvider>
   );

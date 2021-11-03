@@ -1,8 +1,8 @@
 import { useColorModeValue } from '@chakra-ui/color-mode';
 import { HStack, Flex, Spacer, Box } from '@chakra-ui/react';
 import { eitherChild } from '../../types/needChild';
-import { ToggleNavBtn } from '../atoms/navi/ToggleNaviBtn';
-import { ToggleColorBtn } from '../atoms/toggleLightMode';
+import { ToggleNavBtn } from '../atoms/buttons/ToggleNaviBtn';
+import { ToggleColorBtn } from '../atoms/buttons/toggleLightMode';
 
 export const Header: React.FC<eitherChild> = ({ children }) => {
   return (
