@@ -3,10 +3,12 @@ import { HStack, Flex, Spacer, Box } from '@chakra-ui/react';
 import { eitherChild } from '../../types/needChild';
 import { ToggleNavBtn } from '../atoms/buttons/ToggleNaviBtn';
 import { ToggleColorBtn } from '../atoms/buttons/toggleLightMode';
+import { useNavi } from '../../hooks/useNavi';
 
 export const Header: React.FC<eitherChild> = ({ children }) => {
+  const { isOpen } = useNavi();
   return (
-    <Flex
+    <HStack
       as="header"
       top={0}
       width="full"
@@ -18,10 +20,10 @@ export const Header: React.FC<eitherChild> = ({ children }) => {
       px={8}
       h={20}
     >
+      {isOpen || <ToggleNavBtn />}
       {children}
       <Spacer />
       <ToggleColorBtn />
-      <ToggleNavBtn />
-    </Flex>
+    </HStack>
   );
 };

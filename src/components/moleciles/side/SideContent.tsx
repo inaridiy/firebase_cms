@@ -1,5 +1,5 @@
 import { AddIcon } from '@chakra-ui/icons';
-import { VStack, Spacer, Stack, Text } from '@chakra-ui/layout';
+import { Stack, Text } from '@chakra-ui/layout';
 
 import { SideContentFrame } from './SideContentFrame';
 import { SideHeadingFrame } from './SideHeadingFrame';
@@ -9,9 +9,9 @@ export const SideContent: React.FC = ({}) => {
   return (
     <SideContentFrame>
       <SideMinHeader />
-      <Stack pl={4}>
+      <Stack pl={4} spacing="0">
         <SideHeadingFrame icon={<AddIcon />}>Contents</SideHeadingFrame>
-        <Stack pl="4">
+        <Stack pl="4" spacing="1">
           <Text>
             <a href="#">Introduction</a>
           </Text>

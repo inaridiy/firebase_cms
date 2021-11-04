@@ -20,9 +20,13 @@ function AppInit() {
 
   useEffect(() => {
     waitForAuth().then((userData) => {
-      const pathAry = router.pathname.split(`/`);
+      const pathAry = router.pathname.split(`/`).slice(1);
+      console.log(router);
+      console.log(userData);
       if (!userData && pathAry[0] !== 'auth') {
         router.push('/auth/login');
+      } else if (userData && pathAry[0] === 'auth') {
+        router.push('/');
       }
     });
   }, [router.pathname]);

@@ -15,7 +15,7 @@ export const SideHeadingFrame: React.FC<Props> = ({
   'aria-label': label = 'side button',
 }) => {
   return (
-    <HStack p="2">
+    <HStack pl="1">
       <Heading as="h3" size="md">
         {children}
       </Heading>
@@ -24,6 +24,7 @@ export const SideHeadingFrame: React.FC<Props> = ({
       {icon && (
         <IconButton
           bg="transparent"
+          size="md"
           aria-label={label}
           icon={icon}
           onClick={onClick}

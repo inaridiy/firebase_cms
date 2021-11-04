@@ -7,14 +7,12 @@ import { useRouter } from 'next/dist/client/router';
 
 export default function Login() {
   const [error, setError] = useState('');
-  const router = useRouter()
-
-
+  const router = useRouter();
 
   const handleLoginByPassword = async (email: string, password: string) => {
     try {
       await loginByPassword(email, password);
-      router.push("/")
+      router.push('/');
     } catch (error) {
       if ((error as any).code === 'auth/user-not-found') {
         setError('User not found');
