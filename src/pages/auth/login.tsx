@@ -3,13 +3,18 @@ import { Heading } from '@chakra-ui/layout';
 import { AuthLayout } from '../../components/layouts/auth';
 import { LoginForm } from '../../components/moleciles/LoginForm';
 import { loginByGoogle, loginByPassword } from '../../firebase/auth';
+import { useRouter } from 'next/dist/client/router';
 
 export default function Login() {
   const [error, setError] = useState('');
+  const router = useRouter()
+
+
 
   const handleLoginByPassword = async (email: string, password: string) => {
     try {
-      return await loginByPassword(email, password);
+      await loginByPassword(email, password);
+      router.push("/")
     } catch (error) {
       if ((error as any).code === 'auth/user-not-found') {
         setError('User not found');
